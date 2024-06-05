@@ -14,6 +14,8 @@ jobs:
     defaults:
       run:
         shell: bash
+    env:
+      GO_VERSION: '1.22.4'
     steps:
       - name: checkout
         uses: actions/checkout@v4
@@ -22,6 +24,8 @@ jobs:
 
       - name: install go
         uses: actions/setup-go@v5
+        with:
+          go-version: ${{ env.GO_VERSION }}
 
       - name: build
-        run: make uild-cross
+        run: make build-cross
