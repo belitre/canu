@@ -36,5 +36,5 @@ jobs:
         with:
           node-version: ${{ env.NODE_VERSION }}
 
-      - name: build
-        run: make build-cross
+      - name: release
+        run: make semantic-release-ci
