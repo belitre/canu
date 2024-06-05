@@ -9,6 +9,8 @@ CLI to switch aws profiles
 
 The name is a tribute to a friend. It's probably not the best name for an `aws profile switcher` but... well, it means something to me 😊
 
+I do this for fun and on my free time, so if you have any issues or suggestions, please add an issue to the repository, and if I have time I'll try to do it, but keep in mind I can be months without checking the repository again! So feel free to fork the repository if you want and do all the changes you want/need!
+
 ## How to use canu? [WIP]
 
 The first thing you need to know is: **don't use `go install github.com/belitre/canu`, that would add `canu` as an executable to your `$GOPATH/bin` with name `canu`, and we don't want that!**
