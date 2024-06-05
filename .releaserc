@@ -1,0 +1,67 @@
+---
+branches:
+- main
+tagFormat: "${version}"
+preset: angular
+ci: false
+plugins:
+- - "@semantic-release/commit-analyzer"
+  - releaseRules:
+    - type: chore
+      release: patch
+    - type: fix
+      release: patch
+    - type: refactor
+      release: patch
+    - type: feat
+      release: minor
+    - type: major
+      release: major
+- - "@semantic-release/release-notes-generator"
+  - preset: conventionalcommits
+    presetConfig:
+      types:
+      - type: major
+        section: Major
+      - type: feat
+        section: Features
+      - type: feature
+        section: Features
+      - type: fix
+        section: Bug Fixes
+      - type: revert
+        section: Reverts
+      - type: chore
+        section: Miscellaneous Chores
+        hidden: false
+      - type: refactor
+        section: Code Refactoring
+        hidden: false
+      - type: docs
+        section: Documentation
+        hidden: true
+      - type: style
+        section: Styles
+        hidden: true
+      - type: test
+        section: Tests
+        hidden: true
+      - type: build
+        section: Build System
+        hidden: false
+      - type: ci
+        section: Continuous Integration
+        hidden: false
+    parserOpts:
+      noteKeywords:
+      - BREAKING CHANGE
+      - BREAKING-CHANGE
+      - BREAKING CHANGES
+      - BREAKING-CHANGES
+- - "@semantic-release/exec"
+  - prepareCmd: VERSION=${nextRelease.version} make dist
+- - "@semantic-release/github"
+  - assets:
+    - path: _dist/*.tar.gz
+    successComment: false
+    failTitle: false
