@@ -106,7 +106,7 @@ clean-dist:
 	@rm -rf $(DIST_DIR)
 
 .PHONY: build-cross
-build-cross: clean-dist darwin-arm64 darwin-amd64 linux-amd64
+build-cross: clean-dist go-cache darwin-arm64 darwin-amd64 linux-amd64
 
 .PHONY: dist
 dist: build-cross
