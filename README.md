@@ -42,14 +42,14 @@ region = us-east-1
   ```
   curl -sL https://github.com/belitre/canu/releases/download/1.1.0/canu-darwin-arm64.tar.gz | tar -zxf - -C $GOPATH/bin
   ```
-  I recommend to download the `canu` binary in a folder where your user has permissions to write. Of course, as a user, you can download the binary to a folder that requires root permissions, but then you will need to run the `install` command with root permissions, and, unless you are using `sudo` which will keep the same value for your `$HOME` env var, you may need to set the path where you want `canu` to write the alias, to be sure it writes the alias to the user shell config file, not the root one. More information about this in the next section.
+  I recommend to download the `_canu` binary in a folder where your user has permissions to write. Of course, as a user, you can download the binary to a folder that requires root permissions, but then you will need to run the `install` command with root permissions as well, and unless you are using `sudo`, which should keep the correct value for your user in the `$HOME` env var, you may need to set the path where you want `canu` to write the alias, to be sure it writes it to the user shell config file, not the root one. More information about this in the next section.
 * Run `_canu install`. Running this command, `canu` will install with the default settings. That means it will use as default config path for your aws config: `$HOME/.aws/config`, and it will use `$HOME/.bash_profile` to add the alias. If you have different settings, please check the next section to learn how to customise your `canu` installation.
 * Restart your shell, or run the alias returned in the `_canu install` output.
 * Run `canu` and enjoy!
 
 What happens during the installation is:
 * `canu` will create a shell script in the same folder the binary is downloaded with the name of the alias (by default this name is `canu`, but you can set a different name, check the next section to learn how).
-* `canu` will add an alias to your `$HOME/.bash_profile` that will source the shell script, this is how `canu` sets the selected profile in the `AWS_PROFILE` environment variable.
+* `canu` will add an alias to your `$HOME/.bash_profile` that will source the generated shell script, this is how `canu` sets the selected profile in the `AWS_PROFILE` environment variable.
 
 #### Custom installation
 
@@ -110,6 +110,12 @@ There are two different kind of flags here:
   _canu install --alias-name profile-switcher --shell-config /Users/my-user/.zshrc -c /Users/my-user/.aws/custom-config -e test -e dev -i account1 -i account2 -s
   ```
   This will install `canu` with the alias `profile-switcher` using the `zsh` shell config file to create the alias, excluding profiles containing `test` and `dev`, and including profiles containing `account1` and `account2`, and sorting the profiles before showing the menu.
+* Install multiple aliases for different profiles:
+  ```
+  _canu install --alias-name canu-dev -i dev
+  _canu install --alias-name canu-prod -i prod
+  ```
+  This will create two aliases, one called `canu-dev` that will include only profiles containing `dev`, and another one called `canu-prod` that will include only profiles containing `prod`.
 
 ### Uninstall
 
