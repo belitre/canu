@@ -56,6 +56,7 @@ func addCommonFlags(cmd *cobra.Command, c *config.Config, defaultPath string) {
 	cmd.Flags().StringVarP(&c.ConfigPath, "config-path", "c", defaultPath, "Path with the AWS config file with the defined profiles")
 	cmd.Flags().StringArrayVarP(&c.Include, "include", "i", []string{}, "Profiles containing any of the includes will be available to select (ignores upper/lower case)")
 	cmd.Flags().StringArrayVarP(&c.Exclude, "exclude", "e", []string{}, "Profiles containing any of the excludes will be ignored. Exclude takes preference over include (ignores upper/lower case)")
+	cmd.Flags().BoolVarP(&c.IsSort, "sort", "s", false, "If provided it will sort the profiles, by default the profiles will use the same order you have in your aws config file")
 }
 
 func start(cfg *config.Config) error {

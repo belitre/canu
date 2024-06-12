@@ -74,7 +74,7 @@ func start(cfg *config.Config) error {
 
 	fmt.Printf("creating script %s for alias %s ...\n", scriptPath, cfg.AliasName)
 
-	if err := os.WriteFile(scriptPath, []byte(scriptContent), 0700); err != nil {
+	if err := os.WriteFile(scriptPath, []byte(scriptContent), 0755); err != nil {
 		return fmt.Errorf("error while creating script %s: %v", scriptPath, err)
 	}
 
@@ -89,7 +89,7 @@ func start(cfg *config.Config) error {
 
 	fmt.Printf("creating alias %s in shell config file %s ...\n", cfg.AliasName, cfg.ShellConfigScriptPath)
 
-	aliasBlock := fmt.Sprintf("\n%s\n", aliasCommand)
+	aliasBlock := fmt.Sprintf("\n%s", aliasCommand)
 
 	f, err := os.OpenFile(cfg.ShellConfigScriptPath, os.O_APPEND|os.O_WRONLY, 0644)
 

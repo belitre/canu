@@ -46,7 +46,9 @@ func (c *canu) Run() error {
 		return fmt.Errorf("no profiles found on file %s", c.cfg.ConfigPath)
 	}
 
-	slices.Sort(listProfiles)
+	if c.cfg.IsSort {
+		slices.Sort(listProfiles)
+	}
 
 	menu := gocliselect.NewMenu("Choose a profile")
 
