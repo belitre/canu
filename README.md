@@ -48,7 +48,7 @@ region = us-east-1
 * Run `canu` and enjoy!
 
 What happens during the installation is:
-* `canu` will create a shell script in the same folder the binary is downloaded with the name of the alias (by default this name is `canu`, but you can set a different name, check the next section to learn how).
+* `canu` will create a shell script in the same folder the binary is downloaded with the name of the alias (by default this name is `canu`, but you can set a different name, check the next section to learn how). This is the reason you will need to run `_canu install` with root permissions if you download the `_canu` binary to a folder where your user doesn't have write permissions!
 * `canu` will add an alias to your `$HOME/.bash_profile` that will source the generated shell script, this is how `canu` sets the selected profile in the `AWS_PROFILE` environment variable.
 
 #### Custom installation
