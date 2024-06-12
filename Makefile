@@ -112,7 +112,7 @@ build-cross: clean-dist go-cache darwin-arm64 darwin-amd64 linux-amd64
 dist: build-cross
 	( \
 		cd $(DIST_DIR) && \
-		$(TARGET_DIRS) tar -zcf $(APP_NAME)-${VERSION}-{}.tar.gz -C {} . \; \
+		$(TARGET_DIRS) tar -zcf $(APP_NAME)-{}.tar.gz -C {} . \; \
 	)
 
 # Semantic Release

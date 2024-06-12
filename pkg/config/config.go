@@ -13,6 +13,7 @@ type Config struct {
 	UserHomePath string
 	Include      []string
 	Exclude      []string
+	IsSort       bool
 
 	// install flags
 	IsSkipAlias           bool
